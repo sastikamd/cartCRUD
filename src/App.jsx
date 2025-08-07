@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import NavBar from './NavBar';
 import ProductList from './ProductList';
+import Cart from './Cart';
 
 function App() {
   const [cart, setCart] = useState([]);
+  const [showCart, setShowCart] = useState(false); // toggle visibility
 
   const handleAddToCart = (product) => {
     const exists = cart.find((item) => item.id === product.id);
@@ -20,12 +22,16 @@ function App() {
 
   return (
     <>
-      <NavBar cartCount={cart.length} />
-      <ProductList
-        onAddToCart={handleAddToCart}
-        onRemoveFromCart={handleRemoveFromCart}
-        cartItems={cart}
+      <NavBar
+        cartCount={cart.length}
+        onCartClick={() => setShowCart((prev) => !prev)}
       />
+
+      {showCart && (
+        <Cart cartItems={cart} onRemove={handleRemoveFromCart} />
+      )}
+
+      <ProductList onAddToCart={handleAddToCart} cartItems={cart} />
     </>
   );
 }

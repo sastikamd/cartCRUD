@@ -7,7 +7,7 @@ function ProductCard({ product, onAddToCart }) {
       <div className="product-image-container">
         <img src={product.image} alt={product.title} className="product-image" />
       </div>
-      <h3 className="product-price">Price: ${product.price}</h3>
+      <h3 className="product-price">Price: Rs. {product.price}</h3>
       <button className="add-to-cart-btn" onClick={() => onAddToCart(product)}>
         Add to Cart
       </button>

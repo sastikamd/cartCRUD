@@ -1,11 +1,11 @@
 import React from 'react';
 
-function NavBar({ cartCount }) {
+function NavBar({ cartCount, onCartClick }) {
   return (
     <nav className="navbar">
-      <h1 className="navbar-title">Market Place</h1>
-      <div className="cart">
-        ({cartCount})
+      <h1 className="navbar-title">Sastika's Market Place</h1>
+      <div className="cart" onClick={onCartClick}>
+        Cart ({cartCount})
       </div>
     </nav>
   );
